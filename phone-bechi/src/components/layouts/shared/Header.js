@@ -6,7 +6,7 @@ const Header = ({ categories }) => {
     return (
         <div className="navbar bg-cyan-900 text-white lg:px-5">
             <div className="flex-1">
-                <Link className="btn btn-ghost normal-case text-xl">Phone Bechi</Link>
+                <Link to='/' className="btn btn-ghost normal-case text-xl">Phone Bechi</Link>
             </div>
             <div className="flex-none">
                 <ul className="menu menu-horizontal p-0">

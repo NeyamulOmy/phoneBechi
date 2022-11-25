@@ -6,7 +6,7 @@ import Header from './shared/Header';
 const Main = () => {
     const categories = useLoaderData();
     return (
-        <div>
+        <div className='relative min-h-screen'>
             <Header categories={categories}></Header>
             <Outlet />
             <Footer></Footer>

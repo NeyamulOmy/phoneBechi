@@ -1,9 +1,14 @@
 import React from 'react';
+import { Outlet } from 'react-router-dom';
+import Footer from './shared/Footer';
+import Header from './shared/Header';
 
 const Main = () => {
     return (
         <div>
-            <h1 className='text-white'>hello</h1>
+            <Header></Header>
+            <Outlet />
+            <Footer></Footer>
         </div>
     );
 };

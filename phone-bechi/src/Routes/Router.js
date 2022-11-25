@@ -1,3 +1,4 @@
+import Blog from "../components/Pages/Blog";
 import Error from "../components/Pages/Error";
 import Home from "../components/Pages/Home";
 
@@ -13,6 +14,10 @@ const router = createBrowserRouter([
             {
                 path: '/',
                 element: <Home></Home>
+            },
+            {
+                path: '/blog',
+                element: <Blog></Blog>
             },
             {
                 path: '*',

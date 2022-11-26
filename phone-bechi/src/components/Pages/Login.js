@@ -1,11 +1,24 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm } from "react-hook-form";
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../contexts/AuthProvider';
 const Login = () => {
 
     const { register, handleSubmit } = useForm();
-    const handleLogin = (data) => {
+    const { signIn } = useContext(AuthContext);
+    const [loginError, setLoginError] = useState("");
 
+    const handleLogin = (data) => {
+        setLoginError("");
+        signIn(data.email, data.password)
+            .then(result => {
+                const user = result.user;
+                console.log(user)
+            })
+            .catch(error => {
+                console.error(error.message);
+                setLoginError(error.message)
+            });
     }
     return (
         <div className='h-[800px] flex mt-[50px] justify-center'>
@@ -36,7 +49,13 @@ const Login = () => {
                     <option value="B">Option B</option>
                 </select>
                 <textarea {...register("aboutYou")} placeholder="About you" /> */}
-
+                    <div className="form-control w-full ">
+                        {
+                            loginError && <p className='text-red-500'>
+                                {loginError}
+                            </p>
+                        }
+                    </div>
                     <input className='input w-full btn btn-primary mt-5' type="submit" value="Login" />
                 </form>
             </div>

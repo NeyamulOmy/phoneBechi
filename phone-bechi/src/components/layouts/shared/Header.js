@@ -1,8 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../../contexts/AuthProvider';
 
 const Header = ({ categories }) => {
-
+    const { user, logOut } = useContext(AuthContext)
+    const handleLogOut = () => {
+        logOut()
+            .then(() => { })
+            .catch(err => console.error(err))
+    }
     return (
         <div className="navbar bg-cyan-900 text-white lg:px-5">
             <div className="flex-1">
@@ -28,7 +34,11 @@ const Header = ({ categories }) => {
 
                         </ul>
                     </li>
-                    <li><Link to='/login'>Log in</Link></li>
+                    {
+                        user?.uid ? <li><button onClick={handleLogOut}>Log out</button></li>
+                            :
+                            <li><Link to='/login'>Log in</Link></li>
+                    }
                     <li><Link to={'/blog'}>Blog</Link></li>
                 </ul>
             </div>

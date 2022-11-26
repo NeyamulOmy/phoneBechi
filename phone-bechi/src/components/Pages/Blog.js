@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import reactImg from '../../assets/images/react.jpg'
 const Blog = () => {
     return (
-        <div className='grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-4 mt-20'>
+        <div className='grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-4 mt-20 mb-20'>
             <div className="card w-96 bg-base-100 shadow-xl mx-auto">
                 <figure><img src={reactImg} alt="Shoes" /></figure>
                 <div className="card-body">

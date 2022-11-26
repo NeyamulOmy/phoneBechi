@@ -28,7 +28,7 @@ const Header = ({ categories }) => {
 
                         </ul>
                     </li>
-                    <li><Link>Log in</Link></li>
+                    <li><Link to='/login'>Log in</Link></li>
                     <li><Link to={'/blog'}>Blog</Link></li>
                 </ul>
             </div>

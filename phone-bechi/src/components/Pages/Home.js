@@ -3,7 +3,7 @@ import Carousel from '../Carousel';
 
 const Home = () => {
     return (
-        <div>
+        <div className='min-h-[650px]'>
             <Carousel></Carousel>
         </div>
     );

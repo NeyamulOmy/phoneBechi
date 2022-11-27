@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import userEvent from '@testing-library/user-event';
+import { format } from 'date-fns/esm';
 import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
@@ -38,17 +39,21 @@ const AddProduct = () => {
             .then(imgData => {
                 if (imgData.success) {
                     console.log(imgData.data.url);
+                    const timeDate = new Date();
+                    const time = format(timeDate, 'PP');
                     const product = {
                         name: data.name,
                         category: data.category,
                         image: imgData.data.url,
                         seller: user.displayName,
+                        sellerEmail: user.email,
                         description: data.description,
                         location: data.location,
                         used: data.used,
                         orgPrice: data.orgPrice,
                         askPrice: data.askPrice,
                         condition: data.condition,
+                        time: time
 
                     }
 

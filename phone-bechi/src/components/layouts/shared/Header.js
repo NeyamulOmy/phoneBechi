@@ -31,7 +31,7 @@ const Header = ({ categories }) => {
                             {
                                 categories.map(category => {
                                     return (
-                                        <li key={category._id}><Link to={`/category/${category._id}`}>{category.name}</Link></li>
+                                        <li key={category._id}><Link to={`/category/${category.name}`}>{category.name}</Link></li>
                                     )
                                 })
                             }

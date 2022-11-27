@@ -1,4 +1,5 @@
 import Blog from "../components/Pages/Blog";
+import Category from "../components/Pages/Category";
 import Error from "../components/Pages/Error";
 import Home from "../components/Pages/Home";
 import Login from "../components/Pages/Login";
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
             {
                 path: '/signup',
                 element: <Signup></Signup>
+            },
+            {
+                path: '/category/:id',
+                element: <Category></Category>
             },
             {
                 path: '*',

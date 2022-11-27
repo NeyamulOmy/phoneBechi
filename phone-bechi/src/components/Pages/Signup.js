@@ -6,7 +6,7 @@ import { AuthContext } from '../../contexts/AuthProvider';
 
 const Signup = () => {
     //const [data, setData] = useState('');
-
+    //const [createdUserEmail, setCreatedUserEmail] = useState('');
     const { register, handleSubmit, formState: { errors } } = useForm();
     const { createUser, updateUser } = useContext(AuthContext)
     const handleSignup = (data) => {
@@ -19,12 +19,28 @@ const Signup = () => {
                     displayName: data.name
                 }
                 updateUser(userInfo)
-                    .then(() => { })
+                    .then(() => {
+                        saveUser(data.name, data.email, data.userType)
+                    })
                     .catch(err => console.error(err))
                 toast.success("User created successfully!")
             })
             .catch(error => console.error(error));
 
+    }
+    const saveUser = (name, email, userType) => {
+        const user = { name, email, userType };
+        fetch('http://localhost:5000/users', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+            .then(res => res.json())
+            .then(data => {
+                //setCreatedUserEmail(email);
+            })
     }
     return (
         <div className='h-[800px] flex mt-[50px] justify-center'>

@@ -70,7 +70,7 @@ const Signup = () => {
                         <label className="label">
                             <span className="label-text font-bold text-xl">Choose profile picture</span>
                         </label>
-                        <input type="file" accept='image/*' class="block w-full text-sm text-slate-500
+                        <input type="file" accept='image/*' className="block w-full text-sm text-slate-500
                         file:mr-4 file:py-2 file:px-4
                         file:rounded-full file:border-0
                         file:text-sm file:font-semibold

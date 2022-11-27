@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
+import Loading from '../components/layouts/shared/Loading';
 import { AuthContext } from '../contexts/AuthProvider';
 import useSeller from '../hooks/useSeller';
 
@@ -8,7 +9,7 @@ const SellerRoute = ({ children }) => {
     const [isSeller, isSellerLoading] = useSeller(user?.email);
     const location = useLocation();
     if (loading || isSellerLoading) {
-        return <progress className="progress w-56"></progress>
+        return <Loading></Loading>
     }
     if (user && isSeller) {
         return children;

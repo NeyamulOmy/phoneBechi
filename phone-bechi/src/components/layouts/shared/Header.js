@@ -1,13 +1,15 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider';
+import useBuyer from '../../../hooks/useBuyer';
 import useSeller from '../../../hooks/useSeller';
 
 const Header = ({ categories }) => {
 
     const { user, logOut } = useContext(AuthContext)
     const [isSeller] = useSeller(user?.email);
-    console.log(isSeller)
+    const [isBuyer] = useBuyer(user?.email);
+
     const handleLogOut = () => {
         logOut()
             .then(() => { })
@@ -40,6 +42,9 @@ const Header = ({ categories }) => {
                     </li>
                     {
                         isSeller && <li><Link to={`/addproduct`}>Add products</Link></li>
+                    }
+                    {
+                        isBuyer && <li><Link to={`/mybookings`}>My Bookings</Link></li>
                     }
                     {
                         user?.uid ? <li><button onClick={handleLogOut}>Log out</button></li>

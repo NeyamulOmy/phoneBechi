@@ -31,7 +31,7 @@ const Category = () => {
                             </div>
                         </div>
                         {console.log('currentProduct', currentProduct)}
-                        {product && <BookingModal product={currentProduct}></BookingModal>}
+                        {currentProduct && <BookingModal product={currentProduct} setCurrentProduct={setCurrentProduct}></BookingModal>}
                     </div>
                 })
             }

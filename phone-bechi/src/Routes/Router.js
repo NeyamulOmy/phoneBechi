@@ -4,7 +4,9 @@ import Category from "../components/Pages/Category";
 import Error from "../components/Pages/Error";
 import Home from "../components/Pages/Home";
 import Login from "../components/Pages/Login";
+import MyBookings from "../components/Pages/MyBookings";
 import Signup from "../components/Pages/Signup";
+import BuyerRoute from "./BuyerRoute";
 import PrivateRoute from "./PrivateRoute";
 import SellerRoute from "./SellerRoute";
 
@@ -42,6 +44,10 @@ const router = createBrowserRouter([
             {
                 path: '/addproduct',
                 element: <SellerRoute><AddProduct></AddProduct></SellerRoute>
+            },
+            {
+                path: '/mybookings',
+                element: <BuyerRoute><MyBookings></MyBookings></BuyerRoute>
             },
             {
                 path: '*',

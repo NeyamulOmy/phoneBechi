@@ -31,7 +31,7 @@ const MyProducts = () => {
                             <th>Picture</th>
                             <th>Name</th>
                             <th>Price</th>
-                            <th>Payment</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>

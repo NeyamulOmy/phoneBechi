@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider';
+import useAdmin from '../../../hooks/useAdmin';
 import useBuyer from '../../../hooks/useBuyer';
 import useSeller from '../../../hooks/useSeller';
 
@@ -9,7 +10,7 @@ const Header = ({ categories }) => {
     const { user, logOut } = useContext(AuthContext)
     const [isSeller] = useSeller(user?.email);
     const [isBuyer] = useBuyer(user?.email);
-
+    const [isAdmin] = useAdmin(user?.email);
     const handleLogOut = () => {
         logOut()
             .then(() => { })
@@ -43,6 +44,11 @@ const Header = ({ categories }) => {
                     {
                         isSeller && <><li><Link to={`/addproduct`}>Add a product</Link></li>
                             <li><Link to={`/myproducts`}>My products</Link></li></>
+
+                    }
+                    {
+                        isAdmin && <><li><Link to={`/sellers`}>Sellers</Link></li>
+                            <li><Link to={`/buyers`}>Buyers</Link></li></>
 
                     }
                     {

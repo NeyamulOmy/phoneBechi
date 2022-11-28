@@ -24,6 +24,7 @@ const Signup = () => {
                     })
                     .catch(err => console.error(err))
                 toast.success("User created successfully!")
+
             })
             .catch(error => console.error(error));
 
@@ -65,20 +66,7 @@ const Signup = () => {
                         </label>
                         <input type="password" {...register("password", { required: "Password required", minLength: { value: 6, message: "Password must be at least 6 characters long" } })} className="input input-bordered w-full " />
                     </div>
-                    {/* <div className="form-control w-full">
 
-                        <label className="label">
-                            <span className="label-text font-bold text-xl">Choose profile picture</span>
-                        </label>
-                        <input type="file" accept='image/*' className="block w-full text-sm text-slate-500
-                        file:mr-4 file:py-2 file:px-4
-                        file:rounded-full file:border-0
-                        file:text-sm file:font-semibold
-                        file:bg-violet-50 file:text-violet-700
-                        hover:file:bg-violet-100"
-                        />
-
-                    </div> */}
                     <div className="form-control w-full ">
                         <label className="label">
                             <span className="label-text font-bold text-xl">User type</span>

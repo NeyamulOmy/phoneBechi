@@ -69,7 +69,7 @@ const AddProduct = () => {
                         .then(result => {
                             console.log(result);
                             toast.success(`${data.name} is added successfully`);
-                            navigate('/')
+                            navigate('/myproducts')
                         })
                 }
             })
@@ -146,13 +146,7 @@ const AddProduct = () => {
 
                     </select>
                 </div>
-                {/* <div className="form-control w-full max-w-xs">
-                    <label className="label"> <span className="label-text">Photo</span></label>
-                    <input type="file" {...register("image", {
-                        required: "Photo is Required"
-                    })} className="input input-bordered w-full max-w-xs" />
-                    {errors.img && <p className='text-red-500'>{errors.img.message}</p>}
-                </div> */}
+
                 <div className="form-control w-full max-w-xs">
 
                     <label className="label"> <span className="label-text">Picture</span></label>

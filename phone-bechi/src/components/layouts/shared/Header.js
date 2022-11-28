@@ -48,7 +48,7 @@ const Header = ({ categories }) => {
                     }
                     {
                         isAdmin && <><li><Link to={`/sellers`}>Sellers</Link></li>
-                            <li><Link to={`/buyers`}>Buyers</Link></li></>
+                            <li><Link to={`/buyers`}>Buyers</Link></li><li><Link to={`/`}>Reported Items</Link></li></>
 
                     }
                     {

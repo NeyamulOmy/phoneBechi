@@ -41,7 +41,9 @@ const Header = ({ categories }) => {
                         </ul>
                     </li>
                     {
-                        isSeller && <li><Link to={`/addproduct`}>Add products</Link></li>
+                        isSeller && <><li><Link to={`/addproduct`}>Add a product</Link></li>
+                            <li><Link to={`/myproducts`}>My products</Link></li></>
+
                     }
                     {
                         isBuyer && <li><Link to={`/mybookings`}>My Bookings</Link></li>

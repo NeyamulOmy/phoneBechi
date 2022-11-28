@@ -30,7 +30,7 @@ const Category = () => {
                                 < label htmlFor="bookingModal" className="btn btn-outline btn-primary btn-md" onClick={() => setCurrentProduct(product)}> Book Now</label >
                             </div>
                         </div>
-
+                        {console.log('currentProduct', currentProduct)}
                         {product && <BookingModal product={currentProduct}></BookingModal>}
                     </div>
                 })

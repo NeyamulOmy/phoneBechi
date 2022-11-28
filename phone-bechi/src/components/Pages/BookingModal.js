@@ -1,8 +1,10 @@
 import React, { useContext } from 'react';
+import toast from 'react-hot-toast';
 import { AuthContext } from '../../contexts/AuthProvider'
 const BookingModal = ({ product }) => {
     const { user } = useContext(AuthContext)
     const { name, askPrice } = product;
+    console.log(askPrice)
     const handleBooking = event => {
         event.preventDefault();
         const form = event.target;
@@ -14,7 +16,7 @@ const BookingModal = ({ product }) => {
         const location = form.location.value;
 
         const booking = {
-            name: productName,
+            productName: productName,
             price: price,
             buyer: userName,
             email: userEmail,
@@ -22,6 +24,26 @@ const BookingModal = ({ product }) => {
             location: location
         }
         console.log(booking)
+        fetch('http://localhost:5000/bookings', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(booking)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.acknowledged) {
+
+                    toast.success('Booking confirmed');
+                    form.reset();
+
+                }
+                else {
+                    toast.error(data.message);
+                }
+            })
 
     }
     return (
@@ -36,11 +58,11 @@ const BookingModal = ({ product }) => {
                     <h3 className="text-lg font-bold">Book Item!</h3>
                     <form onSubmit={handleBooking} className='grid grid-cols-1 gap-3 mt-10'>
                         <input type="text" disabled className='input w-full input-bordered' name="productName" defaultValue={name} />
-                        <input type="text" disabled className='input w-full input-bordered' name="price" defaultValue={`${askPrice} TK`} />
+                        <input type="text" disabled className='input w-full input-bordered' name="price" defaultValue={`${askPrice}`} />
                         <input name="name" type="text" defaultValue={user?.displayName} disabled placeholder="Your Name" className="input w-full input-bordered" />
                         <input name="email" type="email" defaultValue={user?.email} disabled placeholder="Email Address" className="input w-full input-bordered" />
-                        <input name="phone" type="text" placeholder="Phone Number" className="input w-full input-bordered" />
-                        <input name="location" type="text" placeholder='Meeting location' className="input w-full input-bordered" />
+                        <input name="phone" type="text" required placeholder="Phone Number" className="input w-full input-bordered" />
+                        <input name="location" required type="text" placeholder='Meeting location' className="input w-full input-bordered" />
                         <br />
                         <input className='btn btn-accent w-full' type="submit" value="Book" />
                     </form>

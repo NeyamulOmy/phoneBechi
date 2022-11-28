@@ -1,3 +1,4 @@
+import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext, useState } from 'react';
 import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from 'react-router-dom';
@@ -5,12 +6,49 @@ import { AuthContext } from '../../contexts/AuthProvider';
 const Login = () => {
 
     const { register, handleSubmit } = useForm();
-    const { signIn } = useContext(AuthContext);
+    const { signIn, setLoading, handleGoogleSignIn } = useContext(AuthContext);
     const [loginError, setLoginError] = useState("");
     const location = useLocation();
     const navigate = useNavigate();
-
+    const Googleprovider = new GoogleAuthProvider();
     const from = location.state?.from?.pathname || '/';
+    const handleGoogle = () => {
+        handleGoogleSignIn(Googleprovider)
+            .then((result) => {
+
+
+                const user = result.user;
+
+                const userInfo = {
+                    name: user.displayName,
+                    email: user.email,
+                    userType: "Buyer",
+                }
+
+
+                fetch(' http://localhost:5000/users', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(userInfo)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data)
+                        if (data.acknowledged) {
+
+
+
+                        }
+                    })
+                    .catch(er => console.error(er));
+
+                navigate(from, { replace: true });
+            }).catch((error) => {
+                console.log("error : ", error);
+            })
+    }
 
     const handleLogin = (data) => {
         setLoginError("");
@@ -46,14 +84,6 @@ const Login = () => {
                         </label>
                     </div>
 
-
-
-                    {/* <select {...register("category", { required: true })}>
-                    <option value="">Select...</option>
-                    <option value="A">Option A</option>
-                    <option value="B">Option B</option>
-                </select>
-                <textarea {...register("aboutYou")} placeholder="About you" /> */}
                     <div className="form-control w-full ">
                         {
                             loginError && <p className='text-red-500'>
@@ -63,6 +93,12 @@ const Login = () => {
                     </div>
                     <input className='input w-full btn btn-primary mt-5' type="submit" value="Login" />
                 </form>
+                <div className="w-full mt-3 ">
+                    <button className="btn btn-info btn-outline" onClick={handleGoogle}>
+                        <img src='https://play-lh.googleusercontent.com/6UgEjh8Xuts4nwdWzTnWH8QtLuHqRMUB7dp24JYVE2xcYzq4HA8hFfcAbU-R-PC_9uA1' style={{ height: "40px", borderRadius: "50%", marginRight: "5px" }} alt='' />
+                        Sign in with Google
+                    </button>
+                </div>
             </div>
         </div>
     );

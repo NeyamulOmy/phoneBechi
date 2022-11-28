@@ -36,7 +36,7 @@ const Sellers = () => {
                                 <th>{i + 1}</th>
                                 <td><h1>{seller.name}</h1></td>
                                 <td>{seller.email}</td>
-                                <td></td>
+                                <td><button className='btn btn-outline btn-info btn-sm mr-3'>Verify</button><button className='btn btn-outline btn-error btn-sm'>Delete</button></td>
 
                             </tr>)
                         }

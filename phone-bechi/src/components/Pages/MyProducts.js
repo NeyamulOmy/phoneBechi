@@ -6,7 +6,7 @@ import { AuthContext } from '../../contexts/AuthProvider';
 
 const MyProducts = () => {
     const { user } = useContext(AuthContext);
-    const url = `http://localhost:5000/products?email=${user?.email}`;
+    const url = `https://server-sooty-xi.vercel.app/products?email=${user?.email}`;
 
     const { data: products = [] } = useQuery({
         queryKey: ['products', user?.email],

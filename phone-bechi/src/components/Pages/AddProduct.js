@@ -20,7 +20,7 @@ const AddProduct = () => {
     const { data: categories, isLoading } = useQuery({
         queryKey: ['category'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/categories');
+            const res = await fetch('https://server-sooty-xi.vercel.app/categories');
             const data = await res.json();
             return data;
         }
@@ -58,7 +58,7 @@ const AddProduct = () => {
                     }
 
                     // save Product information to the database
-                    fetch('http://localhost:5000/products', {
+                    fetch('https://server-sooty-xi.vercel.app/products', {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json',

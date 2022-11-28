@@ -26,7 +26,7 @@ const BookingModal = ({ product, setCurrentProduct }) => {
             image: image
         }
         console.log(booking)
-        fetch('http://localhost:5000/bookings', {
+        fetch('https://server-sooty-xi.vercel.app/bookings', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

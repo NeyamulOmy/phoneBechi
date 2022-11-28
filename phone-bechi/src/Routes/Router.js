@@ -21,7 +21,7 @@ const router = createBrowserRouter([
     {
         path: '/',
         element: <Main></Main>,
-        loader: () => fetch('http://localhost:5000/categories'),
+        loader: () => fetch('https://server-sooty-xi.vercel.app/categories'),
         children: [
             {
                 path: '/',
@@ -42,7 +42,7 @@ const router = createBrowserRouter([
             {
                 path: '/category/:brand',
                 element: <PrivateRoute><Category></Category></PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/category/${params.brand}`)
+                loader: ({ params }) => fetch(`https://server-sooty-xi.vercel.app/category/${params.brand}`)
 
             },
             {

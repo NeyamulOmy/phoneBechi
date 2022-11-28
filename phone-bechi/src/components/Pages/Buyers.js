@@ -2,7 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 
 const Buyers = () => {
-    const url = 'http://localhost:5000/buyers';
+    const url = 'https://server-sooty-xi.vercel.app/buyers';
     const { data: buyers = [] } = useQuery({
         queryKey: ['buyers'],
         queryFn: async () => {
@@ -32,10 +32,10 @@ const Buyers = () => {
                     <tbody>
                         {
                             buyers &&
-                            buyers.map((buyers, i) => <tr key={i}>
+                            buyers.map((buyer, i) => <tr key={buyer._id}>
                                 <th>{i + 1}</th>
-                                <td><h1>{buyers.name}</h1></td>
-                                <td>{buyers.email}</td>
+                                <td><h1>{buyer.name}</h1></td>
+                                <td>{buyer.email}</td>
                                 <td><button className='btn btn-outline btn-error btn-sm'>Delete</button></td>
 
                             </tr>)

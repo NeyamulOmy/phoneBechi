@@ -2,7 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 
 const Sellers = () => {
-    const url = 'http://localhost:5000/sellers';
+    const url = 'https://server-sooty-xi.vercel.app/sellers';
     const { data: sellers = [] } = useQuery({
         queryKey: ['sellers'],
         queryFn: async () => {
@@ -32,7 +32,7 @@ const Sellers = () => {
                     <tbody>
                         {
                             sellers &&
-                            sellers.map((seller, i) => <tr key={i}>
+                            sellers.map((seller, i) => <tr key={seller._id}>
                                 <th>{i + 1}</th>
                                 <td><h1>{seller.name}</h1></td>
                                 <td>{seller.email}</td>

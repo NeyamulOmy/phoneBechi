@@ -1,12 +1,15 @@
 import AddProduct from "../components/Pages/AddProduct";
 import Blog from "../components/Pages/Blog";
+import Buyers from "../components/Pages/Buyers";
 import Category from "../components/Pages/Category";
 import Error from "../components/Pages/Error";
 import Home from "../components/Pages/Home";
 import Login from "../components/Pages/Login";
 import MyBookings from "../components/Pages/MyBookings";
 import MyProducts from "../components/Pages/MyProducts";
+import Sellers from "../components/Pages/Sellers";
 import Signup from "../components/Pages/Signup";
+import AdminRoute from "./AdminRoute";
 import BuyerRoute from "./BuyerRoute";
 import PrivateRoute from "./PrivateRoute";
 import SellerRoute from "./SellerRoute";
@@ -54,6 +57,15 @@ const router = createBrowserRouter([
                 path: '/myproducts',
                 element: <SellerRoute><MyProducts></MyProducts></SellerRoute>,
 
+            },
+            {
+                path: '/buyers',
+                element: <AdminRoute><Buyers></Buyers></AdminRoute>
+
+            },
+            {
+                path: '/sellers',
+                element: <AdminRoute><Sellers></Sellers></AdminRoute>
             },
             {
                 path: '*',
